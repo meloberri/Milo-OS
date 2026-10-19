@@ -59,3 +59,13 @@ State machine: `idle → listening → thinking → speaking → idle`, plus `wo
 - [ ] Mobile layout polish + PWA install
 - [ ] Inbox/email connectors for real overnight triage
 - [ ] Push the overnight queue through the GitHub repo so the agent and the dashboard share one source of truth live
+
+## Giving Milo a real brain (free)
+
+The built-in brain only knows a handful of things. To make Milo actually think and converse:
+
+1. Go to [Google AI Studio](https://aistudio.google.com/apikey) and create a free API key (no credit card).
+2. On the Milo OS site, type: `set key YOUR_KEY_HERE`
+3. That's it — the key is stored only in your browser's local storage, never in the code or the repo. Type `clear key` anytime to remove it.
+
+Optional: `set model gemini-2.5-flash` to switch models.
