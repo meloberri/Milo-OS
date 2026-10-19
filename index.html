@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MILO OS — command center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body data-mtab="tasks">
+
+<header class="topbar">
+  <div class="brand">MILO_OS&trade;</div>
+  <div class="pill" id="statusPill" data-state="idle">
+    <span class="dot"></span><span id="pillText">IDLE</span>
+  </div>
+  <div class="clock" id="clock">--:--</div>
+</header>
+
+<main class="layout">
+
+  <!-- LEFT -->
+  <aside class="left">
+    <section class="card" id="statsCard">
+      <h3>COMPANIONS</h3>
+      <div class="stats">
+        <div class="stat active" id="statActive" title="Show active tasks">
+          <div class="num" id="numActive">0</div><div class="lbl">ACTIVE</div>
+        </div>
+        <div class="stat done" id="statDone" title="Show finished tasks">
+          <div class="num" id="numDone">0</div><div class="lbl">DONE</div>
+        </div>
+      </div>
+      <div class="crew-line" id="crewLine">All companions idle.</div>
+    </section>
+
+    <section class="card" id="calendarCard">
+      <h3 id="calTitle">CALENDAR</h3>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-foot" id="calFoot">TODAY &mdash; No events</div>
+      <div class="demo-note">DEMO DATA &middot; NOT SYNCED</div>
+    </section>
+  </aside>
+
+  <!-- CENTER STAGE -->
+  <section class="stage">
+    <canvas id="sphere"></canvas>
+
+    <div class="stage-controls">
+      <button class="icon-btn" id="micBtn" title="Talk to Milo">&#127908;</button>
+      <button class="icon-btn" id="muteBtn" title="Mute voice">&#128266;</button>
+    </div>
+
+    <div class="captions" id="captions"></div>
+
+    <div class="stage-ui">
+      <div class="agent-label" id="agentLabel">MILO</div>
+      <div class="switcher">
+        <button id="prevAgent" title="Previous companion">&lsaquo;</button>
+        <button id="nextAgent" title="Next companion">&rsaquo;</button>
+      </div>
+      <button class="pill-btn" id="knowledgeBtn">&#8964; KNOWLEDGE VIEW</button>
+    </div>
+
+    <div class="k-overlay" id="knowledgeOverlay">
+      <h4>WHAT MILO KNOWS</h4>
+      <div class="k-nodes" id="knowledgeNodes"></div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <aside class="right">
+    <section class="card" id="queueCard">
+      <h3>TASK QUEUE</h3>
+      <div class="queue-head">
+        <button class="btn" id="uploadBtn">UPLOAD</button>
+        <button class="btn" id="insertBtn">INSERT</button>
+        <button class="btn accent" id="overnightBtn">&#9654; OVERNIGHT</button>
+      </div>
+      <input type="file" id="fileInput" style="display:none">
+      <div id="taskList"></div>
+    </section>
+
+    <section class="card" id="chatCard">
+      <div class="tabs">
+        <button class="tab on" data-tab="MILO">MILO</button>
+        <button class="tab" data-tab="KARMA">KARMA</button>
+        <button class="tab" data-tab="PULSE">PULSE</button>
+      </div>
+      <div id="chatLog"></div>
+      <div class="chat-input">
+        <input id="chatText" type="text" placeholder="Talk to Milo&hellip;" autocomplete="off">
+        <button id="sendBtn" title="Send">&#10148;</button>
+        <button id="chatMicBtn" title="Voice input">&#127908;</button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<nav class="mobile-tabs">
+  <button data-mtab="tasks" class="on">TASKS</button>
+  <button data-mtab="chat">CHAT</button>
+  <button data-mtab="calendar">CALENDAR</button>
+</nav>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
