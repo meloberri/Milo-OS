@@ -137,6 +137,14 @@ function wireVoice() {
   $('sphere').addEventListener('click', tapOrb);
   $('micBtn').addEventListener('click', tapOrb);
   $('chatMicBtn').addEventListener('click', tapOrb);
+  // Right Alt = mic toggle (talk mode). Skipped while typing in a field.
+  document.addEventListener('keydown', (e) => {
+    if (e.code !== 'AltRight') return;
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    e.preventDefault();
+    tapOrb();
+  });
   $('muteBtn').addEventListener('click', () => {
     const m = voice.toggleMute();
     $('muteBtn').innerHTML = m ? '&#128263;' : '&#128266;';
